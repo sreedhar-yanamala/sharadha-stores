@@ -101,129 +101,32 @@ def seed():
         print("Categories seeded.")
 
         # ── 3. Products ───────────────────────────────────────────────────
-        products_raw = [
-            {
-                'title': 'Fresh Honey Drizzle Waffles',
-                'description': 'Deliciously crispy on the outside, fluffy on the inside. Baked fresh to order and served with a generous drizzle of organic raw honey and fresh forest berries.',
-                'ingredients': ['Wheat Flour', 'Fresh Berries', 'Organic Honey', 'Butter'],
-                'shelf_life': '15 Days',
-                'images': ['https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Sweets',
-                'price': 250, 'discount_price': 220, 'stock': 50,
-                'is_featured': True, 'is_best_seller': True, 'is_trending': False,
-                'rating': 4.8, 'num_reviews': 2,
-                'reviews': [
-                    {'name': 'Suresh Iyer', 'rating': 5.0, 'comment': "Absolutely delicious waffles! So light and fluffy, and the honey is top notch."},
-                    {'name': 'Meena K.', 'rating': 4.6, 'comment': 'Very tasty, not overly sweet. The waffle texture is exceptional.'},
-                ],
-            },
-            {
-                'title': 'Homemade Glazed Donuts',
-                'description': 'Melt-in-the-mouth soft glazed donuts, hand-dipped in premium cane sugar glaze and baked fresh in our home kitchen daily.',
-                'ingredients': ['Wheat Flour', 'Yeast', 'Cane Sugar', 'Butter'],
-                'shelf_life': '30 Days',
-                'images': ['https://images.unsplash.com/photo-1551024601-bec78aea704b?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Sweets',
-                'price': 200, 'discount_price': 0, 'stock': 40,
-                'is_featured': True, 'is_best_seller': False, 'is_trending': True,
-                'rating': 4.5, 'num_reviews': 8,
-            },
-            {
-                'title': 'Handmade Crispy Potato Samosas',
-                'description': 'Golden, flaky pastry pockets stuffed with a spiced potato and green peas mash, fried to perfection in cold-pressed oil.',
-                'ingredients': ['Potato', 'Green Peas', 'Wheat Flour', 'Spices', 'Cold-Pressed Oil'],
-                'shelf_life': '45 Days',
-                'images': ['https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Snacks',
-                'price': 120, 'discount_price': 110, 'stock': 80,
-                'is_featured': False, 'is_best_seller': True, 'is_trending': True,
-                'rating': 4.9, 'num_reviews': 24,
-            },
-            {
-                'title': 'Butter Murukku (Manoharam)',
-                'description': 'A lighter, melt-in-the-mouth snack flavored with cumin seeds and a heavy hand of farm-fresh butter. Kids and elderly favorites alike.',
-                'ingredients': ['Rice Flour', 'Gram Flour', 'Cumin Seeds', 'Butter', 'Asafoetida', 'Oil', 'Salt'],
-                'shelf_life': '45 Days',
-                'images': ['https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Snacks',
-                'price': 130, 'discount_price': 0, 'stock': 5,  # Low stock — triggers alert
-                'is_featured': True, 'is_best_seller': False, 'is_trending': False,
-                'rating': 4.7, 'num_reviews': 15,
-            },
-            {
-                'title': 'Spicy Pickled Red Chilies',
-                'description': 'Whole red chilies hand-pickled in premium vinegar, mustard seeds, and cold-pressed oil, providing a hot and tangy kick to any meal.',
-                'ingredients': ['Red Chilies', 'Mustard Seeds', 'Vinegar', 'Cold-Pressed Oil', 'Salt'],
-                'shelf_life': '12 Months',
-                'images': ['https://images.unsplash.com/photo-1590779033100-9f60a05a013d?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Pickles',
-                'price': 180, 'discount_price': 160, 'stock': 60,
-                'is_featured': True, 'is_best_seller': True, 'is_trending': False,
-                'rating': 5.0, 'num_reviews': 32,
-            },
-            {
-                'title': 'Aged Pickled Mixed Vegetables',
-                'description': 'A rustic jar of assorted seasonal vegetables preserved in a brine of local spices, vinegar, and natural sea salt.',
-                'ingredients': ['Carrots', 'Cucumber', 'Cauliflower', 'Vinegar', 'Spices', 'Salt'],
-                'shelf_life': '12 Months',
-                'images': ['https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Pickles',
-                'price': 150, 'discount_price': 0, 'stock': 35,
-                'is_featured': False, 'is_best_seller': False, 'is_trending': True,
-                'rating': 4.4, 'num_reviews': 9,
-            },
-            {
-                'title': "Grandma's Sambar Powder",
-                'description': 'A secret ancestral recipe. 15 spice ingredients including coriander seeds, red chilies, black pepper, and lentils dry-roasted individually to perfect temperatures and milled together.',
-                'ingredients': ['Coriander Seeds', 'Dry Red Chili', 'Bengal Gram', 'Toor Dal', 'Fenugreek', 'Black Pepper', 'Cumin', 'Turmeric'],
-                'shelf_life': '6 Months',
-                'images': ['https://images.unsplash.com/photo-1532336414038-cf19250c5757?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Spice Powders',
-                'price': 140, 'discount_price': 125, 'stock': 70,
-                'is_featured': True, 'is_best_seller': True, 'is_trending': True,
-                'rating': 4.8, 'num_reviews': 18,
-            },
-            {
-                'title': 'Spicy Curry Leaf Gunpowder',
-                'description': 'Perfect side kick for hot idli, dosa, or mixed with steamed rice and ghee. Packed with nutrients from fresh local curry leaves, roasted dals, and dry chilies.',
-                'ingredients': ['Curry Leaves', 'Urad Dal', 'Chana Dal', 'Sesame Seeds', 'Red Chili', 'Tamarind', 'Asafoetida', 'Salt'],
-                'shelf_life': '6 Months',
-                'images': ['https://images.unsplash.com/photo-1509358271058-acd22cc93898?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Spice Powders',
-                'price': 110, 'discount_price': 0, 'stock': 50,
-                'is_featured': False, 'is_best_seller': False, 'is_trending': False,
-                'rating': 4.6, 'num_reviews': 11,
-            },
-            {
-                'title': 'Family Feast Special Combo Platter',
-                'description': "A grand curation of our best home kitchen specialties. Contains fresh honey waffles, glazed donuts, crispy samosas, and dipping sauces. Perfect for family gatherings!",
-                'ingredients': ['Waffles', 'Donuts', 'Samosas', 'Dips'],
-                'shelf_life': '30 Days',
-                'images': ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=90&w=800&auto=format&fit=crop'],
-                'category': 'Sweets',
-                'price': 650, 'discount_price': 550, 'stock': 25,
-                'is_featured': True, 'is_best_seller': True, 'is_trending': True, 'is_combo': True,
-                'rating': 4.9, 'num_reviews': 40,
-            },
-        ]
+        try:
+            with open('products_list.json', 'r', encoding='utf-8') as f:
+                products_raw = json.load(f)
+        except Exception as e:
+            print(f"Error loading products_list.json: {e}")
+            raise
 
         seeded_products = []
         for pd in products_raw:
             p = Product(
+                id=int(pd['_id']),
                 user_id=admin.id,
                 title=pd['title'],
                 description=pd['description'],
-                shelf_life=pd['shelf_life'],
+                shelf_life=pd.get('shelfLife', '30 Days'),
+                weight=pd.get('weight', ''),
                 category=pd['category'],
-                price=pd['price'],
-                discount_price=pd.get('discount_price', 0),
-                stock=pd['stock'],
-                is_featured=pd.get('is_featured', False),
-                is_best_seller=pd.get('is_best_seller', False),
-                is_trending=pd.get('is_trending', False),
-                is_combo=pd.get('is_combo', False),
-                rating=pd.get('rating', 0.0),
-                num_reviews=pd.get('num_reviews', 0),
+                price=float(pd['price']),
+                discount_price=float(pd.get('discountPrice', 0)),
+                stock=int(pd['stock']),
+                is_featured=bool(pd.get('isFeatured', False)),
+                is_best_seller=bool(pd.get('isBestSeller', False)),
+                is_trending=bool(pd.get('isTrending', False)),
+                is_combo=bool(pd.get('isCombo', False)),
+                rating=float(pd.get('rating', 0.0)),
+                num_reviews=int(pd.get('numReviews', 0)),
             )
             db.session.add(p)
             db.session.flush()

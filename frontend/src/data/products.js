@@ -305,7 +305,7 @@ const defaultProducts = [
 
   /* ── CHIPS ─────────────────────────────────────────────────── */
   {
-    _id: 'ch1',
+    _id: '18',
     title: 'Banana Chips (Original)',
     description: 'Thin-sliced raw banana chips fried in cold-pressed coconut oil with a light salted finish. Crispy, light, and utterly addictive.',
     ingredients: ['Raw Banana', 'Coconut Oil', 'Salt', 'Turmeric'],
@@ -323,7 +323,7 @@ const defaultProducts = [
     numReviews: 24,
   },
   {
-    _id: 'ch2',
+    _id: '19',
     title: 'Tapioca Chips (Spicy)',
     description: 'Crispy tapioca (kappa) chips with a bold red chilli and salt seasoning. A Kerala classic made fresh with zero preservatives.',
     ingredients: ['Tapioca', 'Red Chilli', 'Coconut Oil', 'Salt'],
@@ -341,7 +341,7 @@ const defaultProducts = [
     numReviews: 18,
   },
   {
-    _id: 'ch3',
+    _id: '20',
     title: 'Sweet Potato Chips',
     description: 'Naturally sweet and lightly salted sweet potato chips fried in sunflower oil. A nutritious, guilt-free snack for all ages.',
     ingredients: ['Sweet Potato', 'Sunflower Oil', 'Salt'],
@@ -359,7 +359,7 @@ const defaultProducts = [
     numReviews: 10,
   },
   {
-    _id: 'ch4',
+    _id: '21',
     title: 'Jackfruit Chips',
     description: 'Unripe jackfruit sliced paper-thin and fried in pure coconut oil. A rare traditional snack from the Kerala coast.',
     ingredients: ['Unripe Jackfruit', 'Coconut Oil', 'Salt'],
@@ -377,7 +377,7 @@ const defaultProducts = [
     numReviews: 14,
   },
   {
-    _id: 'ch5',
+    _id: '22',
     title: 'Nendran Banana Chips (Coconut Oil)',
     description: 'Premium Nendran variety banana chips, stone-salt seasoned, and fried in fresh coconut oil. Our bestselling variety — order early!',
     ingredients: ['Nendran Banana', 'Coconut Oil', 'Stone Salt'],
@@ -395,7 +395,7 @@ const defaultProducts = [
     numReviews: 38,
   },
   {
-    _id: 'ch6',
+    _id: '23',
     title: 'Masala Banana Chips',
     description: 'Banana chips tossed in a special blend of chaat masala, chilli powder, and lemon zest. A spicy twist on a classic favourite.',
     ingredients: ['Banana', 'Coconut Oil', 'Chaat Masala', 'Chilli Powder', 'Lemon Zest'],
@@ -416,7 +416,7 @@ const defaultProducts = [
   /* ── APPALAMS ─────────────────────────────────────────────── */
   {
 
-    _id: 'a1',
+    _id: '24',
     title: 'Sharadha Special Appalam (Medium)',
     description: 'Our signature appalam made from premium urad dal flour, sun-dried for 3 days and hand-pressed to a perfect thin disc. Fries crispy golden in seconds.',
     ingredients: ['Urad Dal Flour', 'Rice Flour', 'Cumin Seeds', 'Black Pepper', 'Asafoetida', 'Salt', 'Cold-Pressed Oil'],
@@ -438,7 +438,7 @@ const defaultProducts = [
     ]
   },
   {
-    _id: 'a2',
+    _id: '25',
     title: 'Traditional Rice Appalam',
     description: 'Classic South Indian rice papads made with fine-milled raw rice flour and seasoned with rock salt. Ideal for frying or roasting on a direct flame.',
     ingredients: ['Raw Rice Flour', 'Rock Salt', 'Sesame Seeds', 'Water'],
@@ -459,7 +459,7 @@ const defaultProducts = [
     ]
   },
   {
-    _id: 'a3',
+    _id: '26',
     title: 'Pepper Appalam',
     description: 'Spice-lovers favourite! Generously coated with coarsely crushed black peppercorns and coriander seeds, these appalams deliver a bold, peppery punch in every bite.',
     ingredients: ['Urad Dal Flour', 'Black Pepper', 'Coriander Seeds', 'Cumin', 'Salt', 'Asafoetida'],
@@ -480,7 +480,7 @@ const defaultProducts = [
     ]
   },
   {
-    _id: 'a4',
+    _id: '27',
     title: 'Tapioca Appalam',
     description: 'A light and delicate appalam made from cassava (tapioca) starch — gluten-free and extremely crispy when fried. Melts in the mouth with zero oiliness.',
     ingredients: ['Tapioca Starch', 'Rock Salt', 'Cumin Seeds', 'Water'],
@@ -499,7 +499,7 @@ const defaultProducts = [
     reviews: []
   },
   {
-    _id: 'a5',
+    _id: '28',
     title: 'Kerala Papadam',
     description: 'Authentic Kerala-style papadam made with black gram dal, hand-rolled wafer thin and sun-dried under slow Kerala summer heat. Roasts perfectly on a flame.',
     ingredients: ['Black Gram Dal', 'Dried Ginger', 'Black Pepper', 'Asafoetida', 'Salt'],
@@ -521,7 +521,7 @@ const defaultProducts = [
     ]
   },
   {
-    _id: 'a6',
+    _id: '29',
     title: 'Homemade Appalam',
     description: 'Traditional homemade appalam crafted using time-honoured methods — hand-kneaded dough, rolled individually, and air-dried for 48 hours. No machine processing.',
     ingredients: ['Urad Dal Flour', 'Cumin Seeds', 'Black Pepper', 'Asafoetida', 'Rock Salt', 'Cold-Pressed Sesame Oil'],
@@ -540,7 +540,7 @@ const defaultProducts = [
     reviews: []
   },
   {
-    _id: 'a7',
+    _id: '30',
     title: 'Special Family Pack Appalam',
     description: 'Our best-selling value pack for families — contains a mixed assortment of plain, pepper, and sesame appalams packed in a large airtight container for sustained freshness.',
     ingredients: ['Urad Dal Flour', 'Rice Flour', 'Black Pepper', 'Sesame Seeds', 'Cumin', 'Salt'],
@@ -562,7 +562,7 @@ const defaultProducts = [
     ]
   },
   {
-    _id: 'a8',
+    _id: '31',
     title: 'Sesame Seed Appalam',
     description: 'Delicate appalams studded with whole white sesame seeds, lending a nutty aroma and subtle crunch. Light, oil-free when roasted on a flame.',
     ingredients: ['Urad Dal Flour', 'White Sesame Seeds', 'Rock Salt', 'Cumin', 'Asafoetida'],
