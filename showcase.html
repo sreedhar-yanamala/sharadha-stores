@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sharadha Stores - Authentic Homemade Pickles & Snacks</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ----------------------------------------------------
+       DESIGN SYSTEM & VARIABLES
+       ---------------------------------------------------- */
+    :root {
+      /* Warm Indian Traditional Color Palette */
+      --primary: #D4AF37;          /* Gold */
+      --primary-orange: #C59F2D;   /* Honey Gold */
+      --primary-light: #FFF8EE;    /* Warm Cream wash */
+      --secondary: #0F3D2E;        /* Forest Green */
+      --secondary-light: #EAE3D2;  /* Soft Warm wash */
+      --accent-yellow: #D4AF37;    /* Gold */
+      --accent-gold: #C59F2D;      /* Accent Honey Gold */
+      
+      /* Neutrals */
+      --bg-cream: #FFF8EE;         /* Traditional Cream Background */
+      --text-dark: #1F2937;        /* Dark Charcoal */
+      --text-muted: #5D6B5E;       /* Soft Sage Grey */
+      --card-white: #FFFDF9;       /* Cream White Card */
+      --border-clay: #EAE3D2;      /* Earthen border */
+      
+      /* Typography */
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Outfit', sans-serif;
+      
+      /* Shadows & Transitions */
+      --shadow-soft: 0 4px 20px -2px rgba(93, 64, 55, 0.08);
+      --shadow-hover: 0 12px 30px -4px rgba(216, 67, 21, 0.15);
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    /* ----------------------------------------------------
+       BASE STYLES & RESET
+       ---------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-cream);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D7CCC8;
+      border-radius: 5px;
+      border: 2px solid var(--bg-cream);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #BCAAA4;
+    }
+
+    /* ----------------------------------------------------
+       LAYOUT UTILITIES
+       ---------------------------------------------------- */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ----------------------------------------------------
+       HEADER & NAVIGATION
+       ---------------------------------------------------- */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 253, 249, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-clay);
+      z-index: 100;
+      transition: var(--transition-smooth);
+    }
+
+    .navbar {
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+    }
+
+    .logo-text h2 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      font-family: var(--font-display);
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--secondary);
+      font-weight: 600;
+      display: block;
+      margin-top: -4px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    nav ul a {
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+      padding: 8px 0;
+    }
+
+    nav ul a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-orange);
+      transition: var(--transition-smooth);
+    }
+
+    nav ul a:hover {
+      color: var(--primary-orange);
+    }
+
+    nav ul a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cart-trigger {
+      position: relative;
+      background: var(--primary-light);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--primary);
+      transition: var(--transition-smooth);
+    }
+
+    .cart-trigger:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 10px;
+      border: 2px solid var(--bg-cream);
+    }
+
+    /* ----------------------------------------------------
+       HERO BANNER
+       ---------------------------------------------------- */
+    .hero {
+      position: relative;
+      padding: 80px 0;
+      background: radial-gradient(circle at 10% 20%, rgba(255, 111, 0, 0.08) 0%, rgba(216, 67, 21, 0.04) 90%);
+      border-bottom: 1px solid var(--border-clay);
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+
+    .hero::before {
+      content: '❀';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 15rem;
+      color: rgba(255, 111, 0, 0.03);
+      font-family: serif;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--secondary-light);
+      color: var(--secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-orange) 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(216, 67, 21, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(216, 67, 21, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-plate {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-yellow) 0%, var(--primary-orange) 100%);
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: floatPlate 8s ease-in-out infinite;
+    }
+
+    @keyframes floatPlate {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
+    }
+
+    .hero-image-plate img {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 8px solid var(--bg-cream);
+    }
+
+    /* ----------------------------------------------------
+       FILTER BAR & CONTROL PANEL
+       ---------------------------------------------------- */
+    .filter-section {
+      margin-bottom: 40px;
+    }
+
+    .filter-card {
+      background: var(--card-white);
+      border: 1px solid var(--border-clay);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      flex: 1 1 300px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 48px 12px 48px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-clay);
+      background: var(--bg-cream);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      transition: var(--transition-smooth);
+      font-family: var(--font-sans);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+      background: white;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      transition: color 0.3s;
+    }
+    .search-wrapper:focus-within .search-icon {
+      color: var(--primary);
+    }
+
+    /* Clear Button */
+    .search-clear-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--border-clay);
+      border: none;
+      color: var(--text-muted);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+    .search-clear-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .search-clear-btn.visible {
+      display: flex;
+    }
+
+    /* Suggestions Dropdown */
+    .search-suggestions {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1.5px solid var(--border-clay);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.12);
+      z-index: 9999;
+      max-height: 260px;
+      overflow-y: auto;
+      display: none;
+      animation: suggFadeIn 0.2s ease;
+    }
+    .search-suggestions.visible {
+      display: block;
+    }
+    @keyframes suggFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .suggestion-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-clay);
+      transition: background 0.18s;
+    }
+    .suggestion-item:last-child { border-bottom: none; }
+    .suggestion-item:hover, .suggestion-item.highlighted {
+      background: var(--primary-light);
+      color: var(--secondary);
+    }
+    .suggestion-icon {
+      color: var(--primary);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+    .suggestion-match {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+    .suggestion-cat-tag {
+      margin-left: auto;
+      font-size: 0.75rem;
+      background: var(--secondary-light);
+      color: var(--secondary);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .suggestion-no-results {
+      padding: 14px 16px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Product Count */
+    .results-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .results-count {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .results-count strong {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+    .search-active-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #8B7318;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .search-active-tag button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #8B7318;
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1;
+      padding: 0;
+    }
+
+    /* Text highlight in cards */
+    .search-highlight {
+      background: rgba(212, 175, 55, 0.35);
+      color: var(--secondary);
+      border-radius: 3px;
+      padding: 0 2px;
+      font-weight: 700;
+    }
+
+    /* Card animation */
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .product-card {
+      animation: cardFadeIn 0.35s ease both;
+    }
+
+    /* No results */
+    .no-results-box {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-muted);
+      animation: cardFadeIn 0.3s ease;
+    }
+    .no-results-box .no-results-emoji { font-size: 3.5rem; margin-bottom: 14px; }
+    .no-results-box h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-dark); margin-bottom: 8px; }
+    .no-results-box p { font-size: 0.95rem; }
+
+    .category-filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--border-clay);
+      background: white;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+      font-family: var(--font-sans);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-btn.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(15, 61, 46, 0.22);
+    }
+
+    /* ----------------------------------------------------
+       PRODUCT GRID & CARDS
+       ---------------------------------------------------- */
+    .products-section {
+      padding-bottom: 80px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: var(--card-white);
+      border: 1px solid var(--border-clay);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(216, 67, 21, 0.15);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .product-badge-secondary {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .product-image-container {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #F5F5F5;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.08);
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      color: var(--text-muted);
+      z-index: 2;
+      transition: var(--transition-smooth);
+    }
+
+    .wishlist-btn:hover {
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    .wishlist-btn.active {
+      color: var(--primary);
+    }
+
+    .product-details {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .rating-container {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .stars {
+      color: var(--accent-yellow);
+      display: flex;
+    }
+
+    .rating-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .product-purchase {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .price-tag {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .original-price {
+      font-size: 0.85rem;
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .current-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .add-to-cart-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .add-to-cart-btn:hover {
+      background: var(--secondary-hover);
+      box-shadow: 0 4px 10px rgba(27, 94, 32, 0.2);
+    }
+
+    .add-to-cart-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ----------------------------------------------------
+       CUSTOMER REVIEWS
+       ---------------------------------------------------- */
+    .reviews {
+      padding: 80px 0;
+      background: var(--secondary-light);
+      border-top: 1px solid var(--border-clay);
+      border-bottom: 1px solid var(--border-clay);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .review-card {
+      background: white;
+      border: 1px solid var(--border-clay);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .review-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .review-info h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+    }
+
+    .review-info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .review-text {
+      font-style: italic;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .review-stars {
+      color: var(--accent-yellow);
+      display: flex;
+    }
+
+    /* ----------------------------------------------------
+       SHOPPING CART SLIDE-OUT DRAWER
+       ---------------------------------------------------- */
+    .cart-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(45, 30, 18, 0.4);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+      transition: var(--transition-smooth);
+    }
+
+    .cart-drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 100%;
+      max-width: 400px;
+      height: 100%;
+      background: white;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-drawer-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border-clay);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-drawer-header h3 {
+      font-size: 1.4rem;
+      color: var(--text-dark);
+    }
+
+    .cart-close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .cart-close-btn:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .cart-items-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cart-empty-message {
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cart-empty-message span {
+      font-size: 3rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      border-bottom: 1px solid var(--border-clay);
+      padding-bottom: 16px;
+    }
+
+    .cart-item-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      background: #F5F5F5;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .cart-item-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .qty-btn {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-clay);
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .qty-btn:hover {
+      background: var(--primary-orange);
+      color: white;
+      border-color: var(--primary-orange);
+    }
+
+    .cart-item-qty {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #E53935;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: auto;
+      transition: var(--transition-smooth);
+    }
+
+    .cart-item-remove:hover {
+      text-decoration: underline;
+    }
+
+    .cart-summary {
+      padding: 24px;
+      border-top: 1px solid var(--border-clay);
+      background: var(--bg-cream);
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .cart-total-price {
+      color: var(--primary);
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      background: var(--secondary);
+      color: white;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition-smooth);
+    }
+
+    .checkout-btn:hover {
+      background: var(--secondary-hover);
+      box-shadow: 0 4px 12px rgba(27, 94, 32, 0.2);
+    }
+
+    /* ----------------------------------------------------
+       TOAST NOTIFICATIONS
+       ---------------------------------------------------- */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .toast {
+      pointer-events: auto;
+      background: var(--text-dark);
+      color: white;
+      padding: 16px 24px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      border-left: 4px solid var(--secondary);
+    }
+
+    @keyframes toastSlideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ----------------------------------------------------
+       FOOTER
+       ---------------------------------------------------- */
+    footer {
+      background: var(--text-dark);
+      color: #FFFDF9;
+      padding: 60px 0 20px 0;
+      border-top: 4px solid var(--primary);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.3rem;
+      color: var(--primary-orange);
+      margin-bottom: 20px;
+    }
+
+    .footer-col p {
+      color: #D7CCC8;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: #D7CCC8;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--primary-orange);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: var(--transition-smooth);
+    }
+
+    .social-icon:hover {
+      background: var(--primary-orange);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      text-align: center;
+      color: #8D6E63;
+      font-size: 0.85rem;
+    }
+
+    /* ----------------------------------------------------
+       RESPONSIVE DESIGN
+       ---------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      .hero-image-plate {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-image-wrapper {
+        order: -1;
+      }
+      nav {
+        display: none; /* In a full app this would be a burger menu */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+      }
+      .filter-card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ----------------------------------------------------
+       HEADER & NAVIGATION
+       ---------------------------------------------------- -->
+  <header>
+    <div class="container navbar">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Sharadha Stores Logo" style="height: 50px; width: auto; object-fit: contain;">
+        <div class="logo-text">
+          <h2>Sharadha Stores</h2>
+          <span>Homemade Pickles & Snacks</span>
+        </div>
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Our Products</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" id="cartTrigger" aria-label="Open Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ----------------------------------------------------
+       HERO BANNER
+       ---------------------------------------------------- -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>✨</span> 100% Traditional & Preservative-Free
+        </div>
+        <h1 class="hero-title">Authentic <span>Homemade Pickles</span> & Snacks</h1>
+        <p class="hero-desc">Experience the heritage of rich flavors prepared in domestic kitchens using generations-old recipes, cold-pressed oils, and sun-cured spices.</p>
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary">Explore Products</a>
+          <a href="#reviews" class="btn btn-secondary">Read Testimonials</a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <div class="hero-image-plate">
+          <img src="images/mango-pickle-public.jpg" alt="Traditional Mango Pickle Plate">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------
+       PRODUCTS WORKSPACE
+       ---------------------------------------------------- -->
+  <main class="container">
+    
+    <!-- Filter Panel -->
+    <section class="filter-section">
+      <div class="filter-card">
+        <div class="search-wrapper" id="searchWrapper">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search products, categories, e.g. kaju, pickles…"
+            autocomplete="off"
+            aria-label="Search products"
+            aria-autocomplete="list"
+            aria-controls="searchSuggestions"
+          >
+          <button class="search-clear-btn" id="searchClearBtn" aria-label="Clear search" title="Clear search">✕</button>
+          <!-- Suggestions Dropdown -->
+          <div class="search-suggestions" id="searchSuggestions" role="listbox"></div>
+        </div>
+        <div class="category-filters">
+          <button class="filter-btn active" data-category="all">All Items</button>
+          <button class="filter-btn" data-category="Pickles">Pickles</button>
+          <button class="filter-btn" data-category="Snacks">Snacks</button>
+          <button class="filter-btn" data-category="Sweets">Sweets</button>
+          <button class="filter-btn" data-category="Spice Powders">Spice Powders</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="products-section" id="products">
+      <h2 class="section-title">Our Handcrafted Selection</h2>
+      <p class="section-subtitle">Freshly roasted, ground, and preserved to bring authentic taste to your kitchen table.</p>
+
+      <!-- Results Meta Bar -->
+      <div class="results-meta" id="resultsMeta">
+        <span class="results-count" id="resultsCount"></span>
+        <span id="searchActiveTag"></span>
+      </div>
+      
+      <div class="products-grid" id="productsGrid">
+        <!-- Products will be generated dynamically by JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ----------------------------------------------------
+       CUSTOMER REVIEWS SECTION
+       ---------------------------------------------------- -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title">Loved by Food Connoisseurs</h2>
+      <p class="section-subtitle">Verified feedback from our community of homemade recipe lovers.</p>
+      
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">RK</div>
+            <div class="review-info">
+              <h4>Rajesh Kumar</h4>
+              <span>Mylapore, Chennai</span>
+            </div>
+          </div>
+          <p class="review-text">"The Mango Pickle takes me back to my grandmother's house. The spice mix and oil are perfectly balanced, not overly salty like commercial ones. Simply outstanding!"</p>
+          <div class="review-stars">
+            ★ ★ ★ ★ ★
+          </div>
+        </div>
+        
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">KR</div>
+            <div class="review-info">
+              <h4>Kavitha Rao</h4>
+              <span>Adyar, Chennai</span>
+            </div>
+          </div>
+          <p class="review-text">"The Ribbon Pakoda is so crispy and light. It is clearly fried in fresh, high-quality oil since it has no sticky aftertaste. Perfect evening tea snack."</p>
+          <div class="review-stars">
+            ★ ★ ★ ★ ★
+          </div>
+        </div>
+        
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">MS</div>
+            <div class="review-info">
+              <h4>Meera S.</h4>
+              <span>Bangalore, Karnataka</span>
+            </div>
+          </div>
+          <p class="review-text">"I ordered the Lemon Pickle and Spicy Kara Sev. The lemon pieces are cured perfectly, soft yet tangy. The delivery was fast and packing was leak-proof."</p>
+          <div class="review-stars">
+            ★ ★ ★ ★ ☆
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------
+       SHOPPING CART DRAWER
+       ---------------------------------------------------- -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>My Cart</h3>
+      <button class="cart-close-btn" id="cartClose" aria-label="Close Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Generated by JS -->
+    </div>
+    
+    <div class="cart-summary">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span class="cart-total-price" id="cartTotalPrice">Rs. 0</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ----------------------------------------------------
+       FOOTER
+       ---------------------------------------------------- -->
+  <footer id="contact">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Sharadha Stores</h3>
+        <p>Bringing you the authentic, traditional tastes of home-cooked pickles and crispy snacks, prepared safely under pure sanitary guidelines.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Facebook">F</a>
+          <a href="#" class="social-icon" aria-label="Instagram">I</a>
+          <a href="#" class="social-icon" aria-label="YouTube">Y</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#reviews">Testimonials</a></li>
+          <li><a href="#contact">Contact & Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Get in Touch</h3>
+        <p>📍 12 Main Kitchen Lane, Mylapore, Chennai, Tamil Nadu - 600004</p>
+        <p>✉ support@sharadhastores.com</p>
+        <p>📞 +91 98765 43210</p>
+        <p>🕒 Mon - Sat: 9:00 AM - 7:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sharadha Stores. All Rights Reserved. Crafted with love & tradition.</p>
+    </div>
+  </footer>
+
+  <!-- ----------------------------------------------------
+       JAVASCRIPT LOGIC
+       ---------------------------------------------------- -->
+  <script>
+    // Product Database
+    const products = [
+      {
+        id: 'p1',
+        name: 'Tangy Sun-Cured Lemon Pickle',
+        category: 'Pickles',
+        price: 140,
+        originalPrice: null,
+        rating: 4.5,
+        reviewsCount: 16,
+        badge: 'Best Seller',
+        image: 'images/lemon-pickle.png',
+        description: 'Traditional sour and spicy lemon pickle prepared using oil-free sun-curing processes for rich flavor.'
+      },
+      {
+        id: 'p2',
+        name: 'Andhra Avakaya Mango Pickle',
+        category: 'Pickles',
+        price: 145,
+        originalPrice: 160,
+        rating: 4.9,
+        reviewsCount: 38,
+        badge: 'Spicy Favorite',
+        image: 'images/mango-pickle-public.jpg',
+        description: 'Fiery cut mango pickle cured with premium red chilies, mustard powder, and cold-pressed sesame oil.'
+      },
+      {
+        id: 'p3',
+        name: 'Ribbon Pakoda (Ola Sev)',
+        category: 'Snacks',
+        price: 95,
+        originalPrice: 110,
+        rating: 4.7,
+        reviewsCount: 19,
+        badge: 'Festive Special',
+        image: 'images/ribbon-pakoda.png',
+        description: 'Light and crispy flat ribbon-like snacks fried in premium cold-pressed oil with spices.'
+      },
+      {
+        id: 'p4',
+        name: 'Spicy Kara Sev',
+        category: 'Snacks',
+        price: 100,
+        originalPrice: null,
+        rating: 4.6,
+        reviewsCount: 11,
+        badge: 'Classic Snack',
+        image: 'images/kara-sev.png',
+        description: 'Crunchy chickpea flour noodles heavily seasoned with black pepper, cumin seeds, and ajwain.'
+      },
+      {
+        id: 'p5',
+        name: 'Spicy Pickled Red Chilies',
+        category: 'Pickles',
+        price: 160,
+        originalPrice: 180,
+        rating: 5.0,
+        reviewsCount: 32,
+        badge: 'Extra Hot',
+        image: 'images/red-chilies-pickle.png',
+        description: 'Whole red chilies hand-pickled in premium vinegar, mustard seeds, and cold-pressed oil, providing a hot and tangy kick.'
+      },
+      {
+        id: 'p6',
+        name: 'Aged Pickled Mixed Vegetables',
+        category: 'Pickles',
+        price: 150,
+        originalPrice: null,
+        rating: 4.4,
+        reviewsCount: 9,
+        badge: 'Classic Pickle',
+        image: 'images/mixed-vegetables-pickle.png',
+        description: 'A rustic mix of carrots, cauliflower, and other seasonal vegetables cured with local spices, oil, and sea salt.'
+      },
+      {
+        id: 'p7',
+        name: 'Handmade Crispy Potato Samosas',
+        category: 'Snacks',
+        price: 120,
+        originalPrice: null,
+        rating: 4.9,
+        reviewsCount: 24,
+        badge: 'Hot Seller',
+        image: 'images/samosa.png',
+        description: 'Flaky pastry pockets stuffed with spiced potatoes and peas, fried in premium cold-pressed oil.'
+      },
+      {
+        id: 'p8',
+        name: 'Butter Murukku (Manoharam)',
+        category: 'Snacks',
+        price: 130,
+        originalPrice: null,
+        rating: 4.7,
+        reviewsCount: 15,
+        badge: 'Melts In Mouth',
+        image: 'images/murukku.png',
+        description: 'A lighter, melt-in-the-mouth snack flavored with cumin seeds and a heavy hand of farm-fresh butter.'
+      },
+      {
+        id: 'p9',
+        name: 'Garlic Paruppu Podi',
+        category: 'Spice Powders',
+        price: 115,
+        originalPrice: 130,
+        rating: 4.8,
+        reviewsCount: 26,
+        badge: 'Aromatic',
+        image: 'images/garlic-podi.png',
+        description: 'Flavorful lentil powder dry-roasted with red chilies, garlic cloves, and curry leaves.'
+      },
+      {
+        id: 'p10',
+        name: 'Authentic Rasam Powder',
+        category: 'Spice Powders',
+        price: 100,
+        originalPrice: 120,
+        rating: 4.7,
+        reviewsCount: 14,
+        badge: 'Classic Rasam',
+        image: 'images/rasam-podi.png',
+        description: 'A traditional spice blend of coriander, cumin, black pepper, and lentils for making soothing Rasam soup.'
+      },
+      {
+        id: 'p11',
+        name: 'Spicy Curry Leaf Gunpowder',
+        category: 'Spice Powders',
+        price: 110,
+        originalPrice: null,
+        rating: 4.6,
+        reviewsCount: 11,
+        badge: 'Nutritious',
+        image: 'images/curry-leaf-podi.png',
+        description: 'Flavorful lentil and curry leaf side kick, perfect with hot idli, dosa, or mixed with rice and ghee.'
+      },
+      {
+        id: 'p12',
+        name: "Grandma's Sambar Powder",
+        category: 'Spice Powders',
+        price: 125,
+        originalPrice: 140,
+        rating: 4.8,
+        reviewsCount: 18,
+        badge: 'Ancestral Recipe',
+        image: 'images/sambar-podi.png',
+        description: 'A secret ancestral recipe. 15 spice ingredients dry-roasted individually and milled to perfection.'
+      },
+      {
+        id: 'p13',
+        name: 'Pure Ghee Mysore Pak',
+        category: 'Sweets',
+        price: 280,
+        originalPrice: 300,
+        rating: 4.8,
+        reviewsCount: 22,
+        badge: 'Mouth Melting',
+        image: 'images/mysore-pak.png',
+        description: 'A traditional royal sweet from South India that melts in your mouth, made with gram flour, premium cow ghee, and sugar.'
+      },
+      {
+        id: 'p14',
+        name: 'Traditional Kaju Katli',
+        category: 'Sweets',
+        price: 320,
+        originalPrice: 350,
+        rating: 4.9,
+        reviewsCount: 14,
+        badge: 'Best Cashews',
+        image: 'images/kaju-katli.png',
+        description: 'Creamy and delectable diamond-shaped cashew sweets, prepared with premium cashews and pure farm-fresh cow ghee.'
+      },
+      {
+        id: 'p15',
+        name: 'Homemade Glazed Donuts',
+        category: 'Sweets',
+        price: 200,
+        originalPrice: null,
+        rating: 4.5,
+        reviewsCount: 8,
+        badge: 'Soft & Fresh',
+        image: 'images/glazed-donuts.png',
+        description: 'Melt-in-the-mouth soft glazed donuts, hand-dipped in premium cane sugar glaze and baked fresh daily.'
+      },
+      {
+        id: 'p16',
+        name: 'Fresh Honey Drizzle Waffles',
+        category: 'Sweets',
+        price: 220,
+        originalPrice: 250,
+        rating: 4.8,
+        reviewsCount: 12,
+        badge: 'Fresh Baked',
+        image: 'images/honey-waffles.png',
+        description: 'Deliciously crispy on the outside, fluffy on the inside. Served with a generous drizzle of organic raw honey and fresh forest berries.'
+      }
+    ];
+
+    // Tags for rich search
+    const productTags = {
+      'p1':  ['lemon', 'sour', 'tangy', 'citrus', 'sun cured', 'pickle'],
+      'p2':  ['mango', 'avakaya', 'andhra', 'spicy', 'hot', 'pickle'],
+      'p3':  ['ribbon', 'pakoda', 'ola sev', 'crispy', 'festive', 'snack'],
+      'p4':  ['kara sev', 'kara', 'spicy', 'chickpea', 'crunch', 'snack'],
+      'p5':  ['red chili', 'chilies', 'hot', 'spicy', 'vinegar', 'pickle'],
+      'p6':  ['mixed vegetables', 'carrot', 'cauliflower', 'classic', 'pickle'],
+      'p7':  ['samosa', 'potato', 'pea', 'fried', 'tea time', 'snack'],
+      'p8':  ['murukku', 'manoharam', 'butter', 'cumin', 'crispy', 'snack'],
+      'p9':  ['garlic', 'podi', 'paruppu', 'lentil', 'aromatic', 'spice'],
+      'p10': ['rasam', 'podi', 'coriander', 'cumin', 'pepper', 'spice'],
+      'p11': ['curry leaf', 'gunpowder', 'idli', 'dosa', 'spice', 'nutritious'],
+      'p12': ['sambar', 'podi', 'powder', 'grandma', 'ancestral', 'spice'],
+      'p13': ['mysore pak', 'mysore', 'ghee', 'sweet', 'south india', 'royal'],
+      'p14': ['kaju', 'katli', 'cashew', 'diamond', 'ghee', 'sweet'],
+      'p15': ['donut', 'glazed', 'baked', 'soft', 'cane sugar', 'sweet'],
+      'p16': ['waffle', 'honey', 'drizzle', 'crispy', 'fluffy', 'sweet']
+    };
+
+    // State
+    let cart = [];
+    let activeCategory = 'all';
+    let searchQuery = '';
+    let suggestionHighlightIndex = -1;
+
+    // DOM Elements
+    const productsGrid    = document.getElementById('productsGrid');
+    const searchInput     = document.getElementById('searchInput');
+    const searchClearBtn  = document.getElementById('searchClearBtn');
+    const searchSuggestions = document.getElementById('searchSuggestions');
+    const resultsCount    = document.getElementById('resultsCount');
+    const searchActiveTag = document.getElementById('searchActiveTag');
+    const filterButtons   = document.querySelectorAll('.filter-btn');
+    const cartTrigger     = document.getElementById('cartTrigger');
+    const cartClose       = document.getElementById('cartClose');
+    const cartDrawer      = document.getElementById('cartDrawer');
+    const cartOverlay     = document.getElementById('cartOverlay');
+    const cartItemsList   = document.getElementById('cartItemsList');
+    const cartTotalPrice  = document.getElementById('cartTotalPrice');
+    const cartBadge       = document.getElementById('cartBadge');
+    const checkoutBtn     = document.getElementById('checkoutBtn');
+    const toastContainer  = document.getElementById('toastContainer');
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      setupEventListeners();
+      loadCartFromLocalStorage();
+    });
+
+    /* ====================================================
+       SEARCH HELPERS
+    ==================================================== */
+
+    // Escape regex special chars
+    function escapeRegex(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // Highlight matching text inside a string (returns HTML)
+    function highlightText(text, query) {
+      if (!query) return text;
+      const escaped = escapeRegex(query);
+      const regex = new RegExp(`(${escaped})`, 'gi');
+      return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+    }
+
+    // Check if product matches a search query
+    function productMatchesQuery(product, query) {
+      if (!query) return true;
+      const q = query.toLowerCase();
+      const tags = (productTags[product.id] || []).join(' ');
+      return (
+        product.name.toLowerCase().includes(q) ||
+        product.category.toLowerCase().includes(q) ||
+        product.description.toLowerCase().includes(q) ||
+        tags.includes(q)
+      );
+    }
+
+    // Build suggestions list from current query
+    function getSuggestions(query) {
+      if (!query || query.length < 1) return [];
+      const q = query.toLowerCase();
+      const seen = new Set();
+      const results = [];
+
+      products.forEach(product => {
+        // Suggest product names
+        if (product.name.toLowerCase().includes(q) && !seen.has(product.name)) {
+          seen.add(product.name);
+          results.push({ label: product.name, category: product.category, type: 'product' });
+        }
+        // Suggest category
+        if (product.category.toLowerCase().includes(q) && !seen.has(product.category)) {
+          seen.add(product.category);
+          results.push({ label: product.category, category: null, type: 'category' });
+        }
+      });
+
+      // Suggest from tags
+      products.forEach(product => {
+        const tags = productTags[product.id] || [];
+        tags.forEach(tag => {
+          if (tag.includes(q) && !seen.has(tag)) {
+            seen.add(tag);
+            results.push({ label: tag, category: product.category, type: 'tag' });
+          }
+        });
+      });
+
+      return results.slice(0, 7);
+    }
+
+    // Render suggestions dropdown
+    function renderSuggestions(query) {
+      const suggestions = getSuggestions(query);
+      suggestionHighlightIndex = -1;
+
+      if (!query || suggestions.length === 0) {
+        hideSuggestions();
+        return;
+      }
+
+      const icons = { product: '🔍', category: '📂', tag: '🏷️' };
+      searchSuggestions.innerHTML = suggestions.map((s, i) => `
+        <div class="suggestion-item" role="option" data-value="${s.label}" data-index="${i}">
+          <span class="suggestion-icon">${icons[s.type]}</span>
+          <span>${highlightText(s.label, query)}</span>
+          ${s.category ? `<span class="suggestion-cat-tag">${s.category}</span>` : ''}
+        </div>
+      `).join('');
+
+      searchSuggestions.classList.add('visible');
+
+      // Click on suggestion
+      searchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
+        item.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          const value = item.getAttribute('data-value');
+          searchInput.value = value;
+          searchQuery = value.toLowerCase();
+          hideSuggestions();
+          renderProducts();
+          updateSearchUI(value);
+        });
+      });
+    }
+
+    function hideSuggestions() {
+      searchSuggestions.classList.remove('visible');
+      searchSuggestions.innerHTML = '';
+      suggestionHighlightIndex = -1;
+    }
+
+    // Navigate suggestions with keyboard
+    function navigateSuggestions(dir) {
+      const items = searchSuggestions.querySelectorAll('.suggestion-item');
+      if (items.length === 0) return;
+
+      items.forEach(i => i.classList.remove('highlighted'));
+      suggestionHighlightIndex += dir;
+
+      if (suggestionHighlightIndex < 0) suggestionHighlightIndex = items.length - 1;
+      if (suggestionHighlightIndex >= items.length) suggestionHighlightIndex = 0;
+
+      items[suggestionHighlightIndex].classList.add('highlighted');
+      searchInput.value = items[suggestionHighlightIndex].getAttribute('data-value');
+    }
+
+    // Update results count + active search tag
+    function updateSearchUI(query) {
+      if (query) {
+        searchClearBtn.classList.add('visible');
+        searchActiveTag.innerHTML = `
+          <span class="search-active-tag">
+            🔍 "${query}"
+            <button onclick="clearSearch()" aria-label="Clear search">✕</button>
+          </span>`;
+      } else {
+        searchClearBtn.classList.remove('visible');
+        searchActiveTag.innerHTML = '';
+      }
+    }
+
+    function clearSearch() {
+      searchInput.value = '';
+      searchQuery = '';
+      hideSuggestions();
+      updateSearchUI('');
+      renderProducts();
+      searchInput.focus();
+    }
+
+    /* ====================================================
+       EVENT LISTENERS
+    ==================================================== */
+    function setupEventListeners() {
+      // Live search on input
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        renderSuggestions(e.target.value);
+        renderProducts();
+        updateSearchUI(e.target.value.trim());
+      });
+
+      // Keyboard navigation in suggestions
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); navigateSuggestions(1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); navigateSuggestions(-1); }
+        else if (e.key === 'Enter') {
+          e.preventDefault();
+          hideSuggestions();
+          const q = searchInput.value.trim();
+          if (q) {
+            // Navigate to shop page with search query
+            window.location.href = `/shop?search=${encodeURIComponent(q)}`;
+          } else {
+            renderProducts();
+          }
+        } else if (e.key === 'Escape') {
+          hideSuggestions();
+          searchInput.blur();
+        }
+      });
+
+      // Hide suggestions on blur (but allow mousedown on item to fire first)
+      searchInput.addEventListener('blur', () => {
+        setTimeout(hideSuggestions, 180);
+      });
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim()) renderSuggestions(searchInput.value);
+      });
+
+      // Clear button
+      searchClearBtn.addEventListener('click', clearSearch);
+
+      // Filter Buttons
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = btn.getAttribute('data-category');
+          renderProducts();
+        });
+      });
+
+      // Cart Drawer Open/Close
+      cartTrigger.addEventListener('click', toggleCart);
+      cartClose.addEventListener('click', toggleCart);
+      cartOverlay.addEventListener('click', toggleCart);
+
+      // Checkout Button
+      checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+          showToast('Your cart is empty!', 'error');
+          return;
+        }
+        showToast('Proceeding to checkout with authentic goods!', 'success');
+        cart = [];
+        updateCart();
+        toggleCart();
+      });
+    }
+
+    // Toggle Cart Drawer
+    function toggleCart() {
+      cartDrawer.classList.toggle('active');
+      cartOverlay.classList.toggle('active');
+    }
+
+    // Render Products
+    function renderProducts() {
+      productsGrid.innerHTML = '';
+      const q = searchQuery.trim();
+
+      const filtered = products.filter(product => {
+        const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+        const matchesSearch = productMatchesQuery(product, q);
+        return matchesCategory && matchesSearch;
+      });
+
+      // Update results count
+      const categoryLabel = activeCategory === 'all' ? 'All Products' : activeCategory;
+      if (q) {
+        resultsCount.innerHTML = `Showing <strong>${filtered.length}</strong> result${filtered.length !== 1 ? 's' : ''} for &ldquo;${q}&rdquo; in <strong>${categoryLabel}</strong>`;
+      } else {
+        resultsCount.innerHTML = `Showing <strong>${filtered.length}</strong> ${categoryLabel}`;
+      }
+
+      if (filtered.length === 0) {
+        productsGrid.innerHTML = `
+          <div class="no-results-box">
+            <div class="no-results-emoji">🌾</div>
+            <h3>No products found matching your search.</h3>
+            <p>Try a different keyword or <button onclick="clearSearch()" style="background:none;border:none;cursor:pointer;color:var(--primary);font-weight:600;font-size:1rem;">clear the search</button> to see all products.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((product, idx) => {
+        const badgeClass = product.category === 'Pickles' ? 'product-badge' : 'product-badge-secondary';
+        const ratingStars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
+        const displayName = q ? highlightText(product.name, q) : product.name;
+        
+        const cardHtml = `
+          <div class="product-card" style="animation-delay: ${idx * 0.05}s">
+            ${product.badge ? `<div class="${badgeClass}">${product.badge}</div>` : ''}
+            <button class="wishlist-btn" onclick="toggleWishlist('${product.id}', this)" aria-label="Add to Wishlist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <div class="product-image-container">
+              <img src="${product.image}" alt="${product.name}" class="product-img">
+            </div>
+            <div class="product-details">
+              <span class="product-category">${product.category}</span>
+              <h3 class="product-name">${displayName}</h3>
+              <p class="product-desc">${product.description}</p>
+              
+              <div class="rating-container">
+                <span class="stars">${ratingStars}</span>
+                <span class="rating-text">(${product.reviewsCount})</span>
+              </div>
+              
+              <div class="product-purchase">
+                <div class="price-tag">
+                  ${product.originalPrice ? `<span class="original-price">Rs. ${product.originalPrice}</span>` : ''}
+                  <span class="current-price">Rs. ${product.price}</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        productsGrid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+
+    // Add to Cart Action
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const existing = cart.find(item => item.id === productId);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        });
+      }
+
+      updateCart();
+      showToast(`Added ${product.name} to cart!`, 'success');
+    }
+
+    // Update Quantity in Cart
+    function changeQuantity(productId, delta) {
+      const item = cart.find(i => i.id === productId);
+      if (!item) return;
+
+      item.quantity += delta;
+      
+      if (item.quantity <= 0) {
+        cart = cart.filter(i => i.id !== productId);
+      }
+
+      updateCart();
+    }
+
+    // Remove from Cart
+    function removeFromCart(productId) {
+      const item = cart.find(i => i.id === productId);
+      cart = cart.filter(i => i.id !== productId);
+      updateCart();
+      if (item) {
+        showToast(`Removed ${item.name} from cart.`, 'warning');
+      }
+    }
+
+    // Update Cart Badge, Drawer List, and Total Sum
+    function updateCart() {
+      // Local Storage Save
+      localStorage.setItem('sharadha_showcase_cart', JSON.stringify(cart));
+      
+      // Update badge count
+      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartBadge.textContent = totalCount;
+
+      // Update cart list
+      cartItemsList.innerHTML = '';
+      
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = `
+          <div class="cart-empty-message">
+            <span>🛒</span>
+            <h4>Your cart is empty</h4>
+            <p>Explore our selection and add some tasty snacks!</p>
+          </div>
+        `;
+        cartTotalPrice.textContent = 'Rs. 0';
+        return;
+      }
+
+      let totalPrice = 0;
+      cart.forEach(item => {
+        totalPrice += item.price * item.quantity;
+        const itemHtml = `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-details">
+              <h4 class="cart-item-name">${item.name}</h4>
+              <span class="cart-item-price">Rs. ${item.price}</span>
+              <div class="cart-item-controls">
+                <button class="qty-btn" onclick="changeQuantity('${item.id}', -1)">-</button>
+                <span class="cart-item-qty">${item.quantity}</span>
+                <button class="qty-btn" onclick="changeQuantity('${item.id}', 1)">+</button>
+              </div>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">Remove</button>
+          </div>
+        `;
+        cartItemsList.insertAdjacentHTML('beforeend', itemHtml);
+      });
+
+      cartTotalPrice.textContent = `Rs. ${totalPrice}`;
+    }
+
+    // Load Cart
+    function loadCartFromLocalStorage() {
+      const saved = localStorage.getItem('sharadha_showcase_cart');
+      if (saved) {
+        try {
+          cart = JSON.parse(saved);
+          updateCart();
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    // Show Toast Notification
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `toast`;
+      if (type === 'error') {
+        toast.style.borderLeftColor = '#EF4444';
+      } else if (type === 'warning') {
+        toast.style.borderLeftColor = '#F59E0B';
+      }
+      
+      toast.innerHTML = `
+        <span>${type === 'success' ? '✔' : '🔔'}</span>
+        <p>${message}</p>
+      `;
+      
+      toastContainer.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.animation = 'fadeOut 0.4s ease forwards';
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    // Toggle Wishlist Action
+    function toggleWishlist(productId, btn) {
+      btn.classList.toggle('active');
+      const product = products.find(p => p.id === productId);
+      if (btn.classList.contains('active')) {
+        btn.querySelector('svg').setAttribute('fill', 'var(--primary)');
+        showToast(`Added ${product.name} to your wishlist!`, 'success');
+      } else {
+        btn.querySelector('svg').setAttribute('fill', 'none');
+        showToast(`Removed ${product.name} from wishlist.`, 'warning');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# Node.js dependencies
+node_modules/
+dist/
+build/
+.npm
+.eslintcache
+
+# Python environment & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+env/
+venv/
+ENV/
+instance/
+.pytest_cache/
+
+# Local databases & storage
+*.db
+*.sqlite3
+mysql_data/
+
+# Tools & downloaded binaries
+mingit/
+mingit.zip
+
+# System files & IDE configs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+Thumbs.db
+.DS_Store
