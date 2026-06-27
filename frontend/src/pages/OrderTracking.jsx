@@ -4,6 +4,7 @@ import { Package, Truck, CheckCircle, Clock, MapPin, CreditCard, XCircle } from 
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import CancelOrderModal from '../components/CancelOrderModal';
+import { API_BASE } from '../config/api';
 
 export default function OrderTracking() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export default function OrderTracking() {
     const fetchOrder = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/api/orders/${id}`, {
+        const response = await fetch(`${API_BASE}/api/orders/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -42,7 +43,7 @@ export default function OrderTracking() {
 
   const handleCancelOrder = async (reason) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${id}/cancel`, {
+      const res = await fetch(`${API_BASE}/api/orders/${id}/cancel`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ reason })

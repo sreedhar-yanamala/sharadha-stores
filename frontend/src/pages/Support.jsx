@@ -44,7 +44,7 @@ export default function Support() {
   const fetchUserTickets = async () => {
     setLoadingTickets(true);
     try {
-      const response = await fetch('http://localhost:5000/api/tickets/mytickets', {
+      const response = await fetch(`${API_BASE}/api/tickets/mytickets`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -68,7 +68,7 @@ export default function Support() {
     }
     setSubmittingTicket(true);
     try {
-      const response = await fetch('http://localhost:5000/api/tickets', {
+      const response = await fetch(`${API_BASE}/api/tickets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default function Support() {
 
   const handleViewTicketDetails = async (tId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/tickets/${tId}`, {
+      const response = await fetch(`${API_BASE}/api/tickets/${tId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -120,7 +120,7 @@ export default function Support() {
     if (!responseMsg.trim()) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/tickets/${selectedTicket._id}/responses`, {
+      const response = await fetch(`${API_BASE}/api/tickets/${selectedTicket._id}/responses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

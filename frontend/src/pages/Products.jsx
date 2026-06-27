@@ -6,9 +6,9 @@ import {
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import { API_BASE } from '../config/api';
 
 /* ── Constants ──────────────────────────────────────────────────── */
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 const PAGE_SIZE = 9;
 
 const CATEGORIES = [

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
+import { API_BASE } from '../config/api';
 import { getLocalProducts, saveLocalProducts, getLocalCategories, saveLocalCategories } from '../data/products';
 import {
   LayoutDashboard, ShoppingBag, FolderOpen, ClipboardList,
@@ -94,7 +95,7 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     setLoadingStats(true);
     try {
-      const response = await fetch('http://localhost:5000/api/orders/stats/summary', {
+      const response = await fetch(`${API_BASE}/api/orders/stats/summary`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await response.json();
@@ -135,7 +136,7 @@ export default function AdminDashboard() {
   const fetchOrders = async () => {
     setLoadingOrders(true);
     try {
-      const response = await fetch('http://localhost:5000/api/orders', {
+      const response = await fetch(`${API_BASE}/api/orders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await response.json();
@@ -150,13 +151,13 @@ export default function AdminDashboard() {
   const fetchInventory = async () => {
     setLoadingInventory(true);
     try {
-      const resInv = await fetch('http://localhost:5000/api/inventory', {
+      const resInv = await fetch(`${API_BASE}/api/inventory`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const dataInv = await resInv.json();
       if (resInv.ok) setInventoryList(dataInv);
 
-      const resAlert = await fetch('http://localhost:5000/api/inventory/alerts/warnings', {
+      const resAlert = await fetch(`${API_BASE}/api/inventory/alerts/warnings`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const dataAlert = await resAlert.json();
@@ -171,7 +172,7 @@ export default function AdminDashboard() {
   const fetchCustomers = async () => {
     setLoadingCustomers(true);
     try {
-      const response = await fetch('http://localhost:5000/api/auth/users', {
+      const response = await fetch(`${API_BASE}/api/auth/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await response.json();
@@ -186,7 +187,7 @@ export default function AdminDashboard() {
   const fetchTickets = async () => {
     setLoadingTickets(true);
     try {
-      const response = await fetch('http://localhost:5000/api/tickets', {
+      const response = await fetch(`${API_BASE}/api/tickets`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await response.json();
@@ -317,7 +318,7 @@ export default function AdminDashboard() {
   // Update Order Status Stepper
   const handleUpdateOrderStatus = async (orderId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+      const response = await fetch(`${API_BASE}/api/orders/${orderId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -353,7 +354,7 @@ export default function AdminDashboard() {
   const handleBatchSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/inventory/${batchProductId}/batches`, {
+      const response = await fetch(`${API_BASE}/api/inventory/${batchProductId}/batches`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -382,7 +383,7 @@ export default function AdminDashboard() {
     if (!ticketReply.trim()) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/tickets/${selectedTicket._id}/responses`, {
+      const response = await fetch(`${API_BASE}/api/tickets/${selectedTicket._id}/responses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -404,7 +405,7 @@ export default function AdminDashboard() {
 
   const handleCloseTicket = async (ticketId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/tickets/${ticketId}`, {
+      const response = await fetch(`${API_BASE}/api/tickets/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

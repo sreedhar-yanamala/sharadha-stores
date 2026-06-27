@@ -4,6 +4,7 @@ import { Calendar, RefreshCw, ShoppingCart, Plus, Minus, Trash2, Shield, Play, P
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import { getProducts } from '../data/products';
+import { API_BASE } from '../config/api';
 
 export default function Subscription() {
   const { user, token } = useAuth();
@@ -51,7 +52,7 @@ export default function Subscription() {
   const fetchMySubscriptions = async () => {
     setLoadingSubs(true);
     try {
-      const response = await fetch('http://localhost:5000/api/subscriptions/mysubscriptions', {
+      const response = await fetch(`${API_BASE}/api/subscriptions/mysubscriptions`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -132,7 +133,7 @@ export default function Subscription() {
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
-      const response = await fetch('http://localhost:5000/api/subscriptions/', {
+      const response = await fetch(`${API_BASE}/api/subscriptions/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +171,7 @@ export default function Subscription() {
 
   const handleUpdateStatus = async (subId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/subscriptions/${subId}/status`, {
+      const response = await fetch(`${API_BASE}/api/subscriptions/${subId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

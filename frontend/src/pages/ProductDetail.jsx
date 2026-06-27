@@ -6,8 +6,7 @@ import { useWishlist } from '../context/WishlistContext';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import { getProductById, getSimilarProducts, getFrequentlyBoughtTogether, getLocalProducts } from '../data/products';
-
-const API_BASE = 'http://localhost:5000/api';
+import { API_BASE } from '../config/api';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -49,8 +48,26 @@ export default function ProductDetail() {
       setLoading(true);
       setSimLoading(true);
       try {
-        // Try local data first
-        const data = getProductById(id);
+        let data = null;
+
+        // 1. Try to fetch product from the backend API first
+        try {
+          const res = await fetch(`${API_BASE}/api/products/${id}`);
+          if (res.ok) {
+            data = await res.json();
+            console.log('[ProductDetail] Loaded product from API:', data);
+          } else {
+            console.warn('[ProductDetail] API returned status:', res.status);
+          }
+        } catch (apiErr) {
+          console.warn('[ProductDetail] Failed to fetch product from API:', apiErr);
+        }
+
+        // 2. Fallback to local static data if API did not return the product
+        if (!data) {
+          data = getProductById(id);
+        }
+
         if (data) {
           setProduct(data);
           setActiveImage((data.images && data.images[0]) || '');
@@ -59,7 +76,7 @@ export default function ProductDetail() {
           // ── Fetch similar products from API by category ──
           try {
             const res = await fetch(
-              `${API_BASE}/products?category=${encodeURIComponent(data.category)}&pageSize=20`
+              `${API_BASE}/api/products?category=${encodeURIComponent(data.category)}&pageSize=20`
             );
             if (res.ok) {
               const apiData = await res.json();

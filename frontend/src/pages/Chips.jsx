@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import { API_BASE } from '../config/api';
 
 /* ─── SEO meta helper ─── */
 function SEOMeta() {
@@ -35,8 +36,6 @@ const FEATURES = [
   { icon: <Truck size={26} />,       title: 'Delivered Fresh',     desc: 'Dispatched within 24 hours of your order, pan India.' },
 ];
 
-const API_BASE = 'http://localhost:5000/api';
-
 export default function Chips() {
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
@@ -55,9 +54,9 @@ export default function Chips() {
   useEffect(() => {
     const fetchChips = async () => {
       setLoading(true);
-      console.log('[Chips] Fetching from API:', `${API_BASE}/products?category=Chips&pageSize=100`);
+      console.log('[Chips] Fetching from API:', `${API_BASE}/api/products?category=Chips&pageSize=100`);
       try {
-        const res = await fetch(`${API_BASE}/products?category=Chips&pageSize=100`);
+        const res = await fetch(`${API_BASE}/api/products?category=Chips&pageSize=100`);
         if (res.ok) {
           const data = await res.json();
           console.log('[Chips] Raw API response:', data);
