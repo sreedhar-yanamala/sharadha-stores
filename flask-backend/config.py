@@ -46,6 +46,12 @@ class Config:
         'max_overflow': 20,
     }
 
+    # Enable SSL/TLS for remote cloud databases (e.g., Aiven, TiDB)
+    if _db_url and 'localhost' not in _db_url and '127.0.0.1' not in _db_url:
+        SQLALCHEMY_ENGINE_OPTIONS['connect_args'] = {
+            'ssl': {}
+        }
+
     PORT  = int(os.getenv('PORT', 5000))
     DEBUG = os.getenv('NODE_ENV', 'development') == 'development'
 

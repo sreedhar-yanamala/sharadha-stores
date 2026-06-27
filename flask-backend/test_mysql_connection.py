@@ -47,12 +47,19 @@ def main():
         sys.exit(1)
 
     try:
-        conn = pymysql.connect(
-            host=mysql_host, port=mysql_port,
-            user=mysql_user, password=mysql_pass,
-            database=mysql_db, charset='utf8mb4',
-            connect_timeout=5,
-        )
+        connect_kwargs = {
+            'host': mysql_host,
+            'port': mysql_port,
+            'user': mysql_user,
+            'password': mysql_pass,
+            'database': mysql_db,
+            'charset': 'utf8mb4',
+            'connect_timeout': 5,
+        }
+        if mysql_host and 'localhost' not in mysql_host and '127.0.0.1' not in mysql_host:
+            connect_kwargs['ssl'] = {}
+
+        conn = pymysql.connect(**connect_kwargs)
         cursor = conn.cursor()
 
         # Check tables

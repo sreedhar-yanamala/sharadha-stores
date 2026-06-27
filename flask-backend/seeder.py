@@ -44,7 +44,14 @@ def seed():
             role='customer',
             phone='9876543211',   # For OTP-based password reset testing
         )
-        db.session.add_all([admin, customer])
+        customer2 = User(
+            name='Meena Kumar',
+            email='meena@gmail.com',
+            password_hash=hash_pw('password123'),
+            role='customer',
+            phone='9876543212',
+        )
+        db.session.add_all([admin, customer, customer2])
         db.session.flush()
 
         db.session.add(Address(
@@ -56,6 +63,11 @@ def seed():
             user_id=customer.id, street='45, Gandhi Nagar Road',
             city='Adyar', state='Tamil Nadu',
             postal_code='600020', country='India', is_default=True,
+        ))
+        db.session.add(Address(
+            user_id=customer2.id, street='78, T-Nagar Avenue',
+            city='Chennai', state='Tamil Nadu',
+            postal_code='600017', country='India', is_default=True,
         ))
         db.session.flush()
         print("Users seeded.")
@@ -220,10 +232,12 @@ def seed():
                 db.session.add(ProductImage(product_id=p.id, url=url))
             for ing in pd.get('ingredients', []):
                 db.session.add(ProductIngredient(product_id=p.id, ingredient=ing))
-            for rev in pd.get('reviews', []):
+            customers = [customer, customer2]
+            for idx, rev in enumerate(pd.get('reviews', [])):
+                reviewer = customers[idx % len(customers)]
                 db.session.add(Review(
                     product_id=p.id,
-                    user_id=customer.id,
+                    user_id=reviewer.id,
                     name=rev['name'],
                     rating=rev['rating'],
                     comment=rev['comment'],
