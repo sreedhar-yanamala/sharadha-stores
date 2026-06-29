@@ -1,0 +1,53 @@
+services:
+  # Flask backend Web Service (Docker container)
+  - type: web
+    name: sharadha-backend
+    env: docker
+    dockerContext: ./flask-backend
+    dockerfilePath: Dockerfile
+    plan: starter
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Set your remote MySQL URL (e.g., Aiven or TiDB) in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USE_TLS
+        value: "true"
+      - key: SMTP_USE_SSL
+        value: "false"
+      - key: SMTP_USER
+        value: yyanamalasreedhar@gmail.com
+      - key: SMTP_PASSWORD
+        value: gtvznfcijyrisqll
+      - key: SMTP_FROM_NAME
+        value: Sharadha Stores
+      - key: SMS_PROVIDER
+        value: console
+
+  # React frontend Static Site
+  - type: web
+    name: sharadha-frontend
+    env: static
+    buildCommand: npm run build --prefix frontend
+    publishDir: frontend/dist
+    headers:
+      - path: /*
+        headers:
+          - key: Cache-Control
+            value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: sharadha-backend
+          type: web
+          property: url

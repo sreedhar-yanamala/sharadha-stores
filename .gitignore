@@ -22,6 +22,7 @@ instance/
 *.db
 *.sqlite3
 mysql_data/
+mysql-data/
 
 # Tools & downloaded binaries
 mingit/

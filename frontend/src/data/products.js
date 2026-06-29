@@ -583,7 +583,7 @@ const defaultProducts = [
 ];
 
 export const getLocalProducts = () => {
-  const local = localStorage.getItem('sharadha_products_v25');
+  const local = localStorage.getItem('sharadha_products_v26');
   if (local) {
     try {
       return JSON.parse(local);
@@ -591,12 +591,12 @@ export const getLocalProducts = () => {
       console.error('Error parsing local storage products:', e);
     }
   }
-  localStorage.setItem('sharadha_products_v25', JSON.stringify(defaultProducts));
+  localStorage.setItem('sharadha_products_v26', JSON.stringify(defaultProducts));
   return defaultProducts;
 };
 
 export const saveLocalProducts = (updated) => {
-  localStorage.setItem('sharadha_products_v25', JSON.stringify(updated));
+  localStorage.setItem('sharadha_products_v26', JSON.stringify(updated));
 };
 
 

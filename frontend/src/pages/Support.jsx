@@ -41,7 +41,7 @@ export default function Support() {
     }
   }, [activeTab, token]);
 
-  const fetchUserTickets = async () => {
+  async function fetchUserTickets() {
     setLoadingTickets(true);
     try {
       const response = await fetch(`${API_BASE}/api/tickets/mytickets`, {
@@ -58,7 +58,7 @@ export default function Support() {
     } finally {
       setLoadingTickets(false);
     }
-  };
+  }
 
   const handleRaiseTicket = async (e) => {
     e.preventDefault();

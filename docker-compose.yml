@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.4
+    container_name: sharadha_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: dbpassword
+      MYSQL_DATABASE: sharadha_stores
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./flask-backend
+      dockerfile: Dockerfile
+    container_name: sharadha_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://root:dbpassword@db:3306/sharadha_stores
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=dbpassword
+      - MYSQL_DATABASE=sharadha_stores
+      - JWT_SECRET=SharadhaStores_J@7!xK#2mP9$vN6qL3wR8yT1uE4
+      - NODE_ENV=production
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USE_TLS=true
+      - SMTP_USE_SSL=false
+      - SMTP_USER=yyanamalasreedhar@gmail.com
+      - SMTP_PASSWORD=gtvznfcijyrisqll
+      - SMTP_FROM_NAME=Sharadha Stores
+      - SMS_PROVIDER=console
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:5000
+    container_name: sharadha_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:

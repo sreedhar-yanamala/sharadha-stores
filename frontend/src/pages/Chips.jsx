@@ -71,7 +71,7 @@ export default function Chips() {
         console.error('[Chips] API fetch error:', err);
         // Fallback: filter local data from localStorage
         try {
-          const local = localStorage.getItem('sharadha_products_v25');
+          const local = localStorage.getItem('sharadha_products_v26');
           const all = local ? JSON.parse(local) : [];
           const chips = all.filter(p => p.category?.trim().toLowerCase() === 'chips');
           console.log('[Chips] Fallback localStorage chips:', chips.length, chips);

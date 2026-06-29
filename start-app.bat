@@ -44,9 +44,22 @@ cd /d "%~dp0flask-backend"
 py -m pip install -r requirements.txt --quiet
 cd /d "%~dp0"
 
+REM ── Start MySQL Database ──────────────────────────────────────
+echo.
+echo [0/3] Starting Local MySQL Server...
+echo.
+set MYSQLD_BIN="C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe"
+if exist %MYSQLD_BIN% (
+    start "Sharadha Local MySQL" /min %MYSQLD_BIN% --datadir="%~dp0mysql-data" --port=3306 --shared-memory
+    timeout /t 3 /nobreak >nul
+    echo  MySQL Server started!
+) else (
+    echo  WARNING: Local MySQL executable not found. Ensuring service is running...
+)
+
 REM ── Start Flask Backend ───────────────────────────────────────
 echo.
-echo [1/2] Starting Flask Backend (MySQL) on port 5000...
+echo [1/3] Starting Flask Backend (MySQL) on port 5000...
 echo.
 start "Sharadha Flask Backend (MySQL)" cmd /k "cd /d "%~dp0flask-backend" && echo Starting Flask backend with MySQL... && py app.py"
 
@@ -54,7 +67,7 @@ REM Wait for Flask to initialize
 timeout /t 5 /nobreak >nul
 
 REM ── Start Frontend ────────────────────────────────────────────
-echo [2/2] Starting Frontend (React + Vite) on port 5173...
+echo [2/3] Starting Frontend (React + Vite) on port 5173...
 echo.
 start "Sharadha Frontend" cmd /k "cd /d "%~dp0frontend" && echo Starting frontend... && npm run dev"
 
