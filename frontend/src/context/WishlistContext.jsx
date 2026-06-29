@@ -1,16 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNotification } from './NotificationContext';
-import { API_BASE } from '../config/api';
 
 const WishlistContext = createContext();
 export const useWishlist = () => useContext(WishlistContext);
 
-const WISHLIST_API = `${API_BASE}/api/wishlist`;
-
 // ── Helpers ───────────────────────────────────────────────────────────────
-function getToken() {
-  try { return localStorage.getItem('sharadha_token'); } catch { return null; }
-}
 function getLocalWishlist() {
   try { return JSON.parse(localStorage.getItem('wishlistItems') || '[]'); } catch { return []; }
 }
