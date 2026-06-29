@@ -136,7 +136,10 @@ export default function Home() {
             top: '12px',
             right: '12px',
             background: 'var(--card)',
-            color: isAdded ? 'var(--primary)' : 'var(--text-muted)',
+            color: isAdded ? '#E11D48' : 'var(--text-muted)',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
             borderRadius: '50%',
             width: '32px',
             height: '32px',
@@ -146,8 +149,10 @@ export default function Home() {
             boxShadow: 'var(--shadow-sm)',
             zIndex: 10
           }}
+          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.15)'}
+          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
         >
-          <Heart size={16} fill={isAdded ? 'var(--primary)' : 'none'} />
+          <Heart size={16} fill={isAdded ? '#E11D48' : 'none'} />
         </button>
 
         {/* Product Image */}

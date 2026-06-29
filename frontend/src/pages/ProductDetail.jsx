@@ -448,7 +448,7 @@ export default function ProductDetail() {
               className="btn btn-outline btn-sm"
               style={{ borderRadius: '2rem', display: 'flex', gap: '0.25rem', padding: '0.4rem 0.8rem' }}
             >
-              <Heart size={14} fill={isInWishlist(product._id) ? 'var(--primary)' : 'none'} style={{ color: 'var(--primary)' }} />
+              <Heart size={14} fill={isInWishlist(product._id) ? '#E11D48' : 'none'} style={{ color: isInWishlist(product._id) ? '#E11D48' : 'var(--text-muted)' }} />
               Wishlist
             </button>
           </div>

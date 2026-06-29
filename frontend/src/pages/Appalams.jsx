@@ -389,7 +389,7 @@ export default function Appalams() {
                         background:'rgba(255,255,255,0.9)', backdropFilter:'blur(4px)',
                         border:'1px solid var(--border)',
                         display:'flex', alignItems:'center', justifyContent:'center',
-                        cursor:'pointer', transition:'transform 0.2s',
+                        cursor:'pointer', transition:'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                         color: inWish ? '#e11d48' : 'var(--text-muted)',
                       }}
                         onMouseEnter={e => e.currentTarget.style.transform='scale(1.15)'}

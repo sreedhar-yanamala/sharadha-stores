@@ -421,17 +421,17 @@ export default function Category() {
                         style={{
                           position: 'absolute', top: '12px', right: '12px',
                           background: 'rgba(255,255,255,0.92)',
-                          color: isAdded ? '#EF4444' : 'var(--text-muted)',
+                          color: isAdded ? '#E11D48' : 'var(--text-muted)',
                           borderRadius: '50%', width: '34px', height: '34px',
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           boxShadow: '0 2px 8px rgba(0,0,0,0.12)', zIndex: 10,
-                          transition: 'transform 0.2s, color 0.2s',
+                          transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                           border: '1px solid var(--border-light)',
                         }}
                         onMouseEnter={e => e.currentTarget.style.transform='scale(1.12)'}
                         onMouseLeave={e => e.currentTarget.style.transform='scale(1)'}
                       >
-                        <Heart size={16} fill={isAdded ? '#EF4444' : 'none'} />
+                        <Heart size={16} fill={isAdded ? '#E11D48' : 'none'} />
                       </button>
 
                       {/* Product Image */}

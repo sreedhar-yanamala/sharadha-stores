@@ -41,15 +41,15 @@ function ProductCard({ product, query = '', showHighlight = false, onWishlist, i
           width: '32px', height: '32px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: 'var(--shadow-sm)', zIndex: 5,
-          color: inWishlist ? 'var(--primary)' : 'var(--text-muted)',
-          transition: 'transform 0.18s',
+          color: inWishlist ? '#E11D48' : 'var(--text-muted)',
+          transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
           border: 'none', cursor: 'pointer',
         }}
         onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.15)'}
         onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
         aria-label="Toggle wishlist"
       >
-        <Heart size={14} fill={inWishlist ? 'var(--primary)' : 'none'} />
+        <Heart size={14} fill={inWishlist ? '#E11D48' : 'none'} />
       </button>
 
       {/* Discount badge */}

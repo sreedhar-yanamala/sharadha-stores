@@ -464,13 +464,13 @@ export default function Chips() {
                         background:'rgba(255,255,255,0.92)', backdropFilter:'blur(4px)',
                         border:'1px solid var(--border-light)',
                         display:'flex', alignItems:'center', justifyContent:'center',
-                        cursor:'pointer', transition:'transform 0.2s',
-                        color: inWish ? '#EF4444' : 'var(--text-muted)',
+                        cursor:'pointer', transition:'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                        color: inWish ? '#E11D48' : 'var(--text-muted)',
                       }}
                         onMouseEnter={e => e.currentTarget.style.transform='scale(1.15)'}
                         onMouseLeave={e => e.currentTarget.style.transform='scale(1)'}
                       >
-                        <Heart size={16} fill={inWish ? '#EF4444' : 'none'} />
+                        <Heart size={16} fill={inWish ? '#E11D48' : 'none'} />
                       </button>
 
                       {/* Product image */}
